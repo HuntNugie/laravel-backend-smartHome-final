@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('smart_homes', function (Blueprint $table) {
             $table->id();
+            $table->string("objek");
+            $table->boolean("status_objek")->default(false);
+            $table->integer("pin");
             $table->timestamps();
         });
     }

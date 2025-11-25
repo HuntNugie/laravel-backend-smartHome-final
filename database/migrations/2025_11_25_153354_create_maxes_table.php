@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('maxes', function (Blueprint $table) {
             $table->id();
+            $table->integer("max_temp")->default(0);
+            $table->integer("max_humd")->default(0);
             $table->timestamps();
         });
     }

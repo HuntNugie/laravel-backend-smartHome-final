@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('dht22s', function (Blueprint $table) {
             $table->id();
+            $table->float("temperature")->default(0);
+            $table->float("suhu")->default(0);
+            $table->float("heatIndex")->default(0);
             $table->timestamps();
         });
     }

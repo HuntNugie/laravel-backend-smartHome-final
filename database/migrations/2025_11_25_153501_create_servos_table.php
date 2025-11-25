@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('servos', function (Blueprint $table) {
             $table->id();
+            $table->boolean("status_servo")->default(0);
             $table->timestamps();
         });
     }
