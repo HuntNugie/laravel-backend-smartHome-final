@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class SmartHome extends Model
 {
-    //
+    protected $guarded = ["id"];
+
 }
