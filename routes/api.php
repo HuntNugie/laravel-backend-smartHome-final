@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dht22Controller;
 use App\Http\Controllers\SmartHomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,4 +17,14 @@ Route::prefix("smartHome")->group(function(){
     // untuk mengupdate status jika sudah di klik objek smartHome nya
     Route::put("/update/{smartHome}",[SmartHomeController::class,"update"]);
 
+});
+
+
+// route untuk dht22
+Route::prefix("dht22")->group(function(){
+    // untuk mendapatkan data dht22
+    Route::get("/all",[Dht22Controller::class,"index"]);
+
+    // untuk mengupdate data dht22
+    Route::get("/update/{temp}/{humd}/{heat}",[Dht22Controller::class,"update"]);
 });

@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 class Dht22Controller extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mendapatkan seluruh data dht22
      */
     public function index()
     {
-        //
+        $data = Dht22::first();
+        return response()->json($data);
     }
 
     /**
@@ -48,11 +49,21 @@ class Dht22Controller extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * untuk mengupdate data dht22
      */
     public function update(Request $request, Dht22 $dht22)
     {
-        //
+        $temperature = $request->temp;
+        $humidity = $request->humd;
+        $heatIndex = $request->heat;
+
+        $data = Dht22::first();
+        $data->update([
+            "temperature" => $temperature,
+            "humidity" => $humidity,
+            "heatIndex" => $heatIndex
+        ]);
+        return response()->json($data);
     }
 
     /**
