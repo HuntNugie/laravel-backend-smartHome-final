@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dht22Controller;
 use App\Http\Controllers\MaxController;
+use App\Http\Controllers\ServoController;
 use App\Http\Controllers\SmartHomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,4 +38,13 @@ Route::prefix("max_dht")->group(function(){
 
     // untuk mengupdate nilai max temp dan humd
     Route::put("/update",[MaxController::class,"update"]);
+});
+
+// route untuk servo
+Route::prefix("servo")->group(function(){
+    // untuk mendapatkan status servo
+    Route::get("/status",[ServoController::class,"index"]);
+
+    // untuk mengupdate status servo
+    Route::put("/update/{servo}",[ServoController::class,"update"]);
 });

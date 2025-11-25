@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 class ServoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * untuk mendapatkan status servo
      */
     public function index()
     {
-        //
+        $data = Servo::first();
+        return response()->json($data);
     }
 
     /**
@@ -52,7 +53,9 @@ class ServoController extends Controller
      */
     public function update(Request $request, Servo $servo)
     {
-        //
+        $servo->update(["status_servo" => !$servo->status_servo]);
+
+        return response()->json($servo);
     }
 
     /**
