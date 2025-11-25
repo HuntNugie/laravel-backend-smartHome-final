@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 class MaxController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * mendapatkan data max temp dan humd
      */
     public function index()
     {
-        //
+        $data = Max::first();
+        return response()->json($data);
     }
 
     /**
@@ -52,7 +53,16 @@ class MaxController extends Controller
      */
     public function update(Request $request, Max $max)
     {
-        //
+        $max_temp = $request->max_temp;
+        $max_humd = $request->max_humd;
+
+        $data = Max::first();
+        $data->update([
+            "max_temp" => $max_temp,
+            "max_humd" => $max_humd
+        ]);
+
+        return response()->json($data);
     }
 
     /**

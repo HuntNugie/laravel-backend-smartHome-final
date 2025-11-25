@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dht22Controller;
+use App\Http\Controllers\MaxController;
 use App\Http\Controllers\SmartHomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,13 @@ Route::prefix("dht22")->group(function(){
 
     // untuk mengupdate data dht22
     Route::get("/update/{temp}/{humd}/{heat}",[Dht22Controller::class,"update"]);
+});
+
+// route untuk nilai max
+Route::prefix("max_dht")->group(function(){
+    // mendapatkan nilai max temp dan humd
+    Route::get("/all",[MaxController::class,"index"]);
+
+    // untuk mengupdate nilai max temp dan humd
+    Route::put("/update",[MaxController::class,"update"]);
 });
