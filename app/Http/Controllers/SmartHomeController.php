@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 class SmartHomeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * untuk mendapatkan status objek smartHome
      */
     public function index()
     {
-        //
+        $data = SmartHome::all();
+        return response()->json($data);
     }
 
     /**
@@ -52,7 +53,9 @@ class SmartHomeController extends Controller
      */
     public function update(Request $request, SmartHome $smartHome)
     {
-        //
+        $smartHome->update(["status_objek" => !$smartHome->status_objek]);
+
+        return response()->json($smartHome);
     }
 
     /**
